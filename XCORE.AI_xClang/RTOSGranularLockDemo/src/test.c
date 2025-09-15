@@ -686,7 +686,7 @@ uint32_t ulState;
 
 /*-----------------------------------------------------------*/
 
-void vApplicationTickHook( void )
+void vPortApplicationTickHook( void )
 {
 	#if( mainCREATE_SIMPLE_BLINKY_DEMO_ONLY == 0 )
 	{
@@ -750,6 +750,18 @@ void vApplicationTickHook( void )
 		}
 	}
 	#endif /* #if( mainCREATE_SIMPLE_BLINKY_DEMO_ONLY == 0 ) */
+}
+
+void vApplicationTickHook( void )
+{
+    #if ( portUSING_GRANULAR_LOCKS == 0 )
+        vPortApplicationTickHook();
+    #else
+        /* The hook functions of the demo can't be called tick vApplicationTickHook
+         * as xTaskIncrementTick() should be called in critical section now, which
+         * result in critial section hierarchy problem.
+         * Port can define a vPortApplicationTickHook for the corresponding tasks. */
+    #endif
 }
 
 /*-----------------------------------------------------------*/

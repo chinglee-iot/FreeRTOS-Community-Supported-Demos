@@ -23,32 +23,30 @@
 #define testingmainENABLE_DEATH_TASKS					1
 
 /*** These tests run on tile 0 ***/
-#define testingmainENABLE_ABORT_DELAY_TASKS				0
-#define testingmainENABLE_BLOCKING_QUEUE_TASKS			0
-#define testingmainENABLE_BLOCK_TIME_TASKS				0
+#define testingmainENABLE_ABORT_DELAY_TASKS				1
+#define testingmainENABLE_BLOCKING_QUEUE_TASKS			1
+#define testingmainENABLE_BLOCK_TIME_TASKS				1
 #define testingmainENABLE_COUNT_SEMAPHORE_TASKS			1
-#define testingmainENABLE_DYNAMIC_PRIORITY_TASKS		0
-#define testingmainENABLE_EVENT_GROUP_TASKS				0
-#define testingmainENABLE_INTERRUPT_QUEUE_TASKS         0 // 1
+#define testingmainENABLE_DYNAMIC_PRIORITY_TASKS		0 // break the data group hierarchy ( suspend then take lock )
+#define testingmainENABLE_EVENT_GROUP_TASKS				1 // Application tick hook break hierarchy
+#define testingmainENABLE_INTERRUPT_QUEUE_TASKS         0 // 1, pxIntQueueTimerISR request task with preemption disable to yield
 #define testingmainENABLE_FLOP_MATH_TASKS				1
-#define testingmainENABLE_INT_MATH_TASKS				0
-
-/*** These tests run on tile 1 ***/
-#define testingmainENABLE_GENERIC_QUEUE_TASKS			0
-#define testingmainENABLE_INTERRUPT_SEMAPHORE_TASKS		0 // 1
-#define testingmainENABLE_MESSAGE_BUFFER_TASKS			0
-#define testingmainENABLE_POLLED_QUEUE_TASKS			0
-#define testingmainENABLE_QUEUE_PEEK_TASKS				0
-#define testingmainENABLE_QUEUE_OVERWRITE_TASKS			1
-#define testingmainENABLE_QUEUE_SET_TASKS				0
-#define testingmainENABLE_QUEUE_SET_POLLING_TASKS		0
-#define testingmainENABLE_RECURSIVE_MUTEX_TASKS			0
-#define testingmainENABLE_SEMAPHORE_TASKS				0
-#define testingmainENABLE_STREAMBUFFER_TASKS			0
-#define testingmainENABLE_STREAMBUFFER_INTERRUPT_TASKS	0
-#define testingmainENABLE_TASK_NOTIFY_TASKS				1
-#define testingmainENABLE_TASK_NOTIFY_ARRAY_TASKS	    0
-#define testingmainENABLE_TIMER_DEMO_TASKS				0
+#define testingmainENABLE_INT_MATH_TASKS				1
+#define testingmainENABLE_GENERIC_QUEUE_TASKS			0 // break the data group hierarchy ( suspend then take lock )
+#define testingmainENABLE_INTERRUPT_SEMAPHORE_TASKS		0 // Application tick hook break hierarchy, test failed
+#define testingmainENABLE_MESSAGE_BUFFER_TASKS			1
+#define testingmainENABLE_POLLED_QUEUE_TASKS			1
+#define testingmainENABLE_QUEUE_PEEK_TASKS				1
+#define testingmainENABLE_QUEUE_OVERWRITE_TASKS			1 // Application tick hook break hierarchy
+#define testingmainENABLE_QUEUE_SET_TASKS				0 // Application tick hook break hierarchy, QueueSet.c:509
+#define testingmainENABLE_QUEUE_SET_POLLING_TASKS		1 // Application tick hook break hierarchy
+#define testingmainENABLE_RECURSIVE_MUTEX_TASKS			0 // 336 assume the task high priority task will be blocked soon
+#define testingmainENABLE_SEMAPHORE_TASKS				0 // Working on empty list
+#define testingmainENABLE_STREAMBUFFER_TASKS			0 // Application tick hook break hierarchy, user level critical section
+#define testingmainENABLE_STREAMBUFFER_INTERRUPT_TASKS	0 // Application tick hook break hierarchy, test failed
+#define testingmainENABLE_TASK_NOTIFY_TASKS				1 // Application tick hook break hierarchy
+#define testingmainENABLE_TASK_NOTIFY_ARRAY_TASKS	    1 // Application tick hook break hierarchy
+#define testingmainENABLE_TIMER_DEMO_TASKS				0 // Application tick hook break hierarchy, assert 1130
 
 /*** These tests run on all tiles ***/
 #define mainREGTEST_PRIORITY				( tskIDLE_PRIORITY + 0 )

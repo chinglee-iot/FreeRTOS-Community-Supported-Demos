@@ -86,7 +86,7 @@ vpath %.c $(ROOT_DIRS)
 vpath %.xc $(ROOT_DIRS)
 vpath %.S $(ROOT_DIRS)
 
-FLAGS = -Wall -O2 -g -report -fxscope \
+FLAGS = -Wall -O0 -g -report -fxscope \
         $(DEMO_ROOT)/$(TARGET).xn \
         $(DEMO_ROOT)/config.xscope \
         $(addprefix -I,$(INCLUDE_DIRS)) \
