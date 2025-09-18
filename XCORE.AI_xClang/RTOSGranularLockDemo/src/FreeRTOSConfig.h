@@ -103,5 +103,6 @@ your application. */
 #define INCLUDE_xQueueGetMutexHolder            1
 
 /* A header file that defines trace macro can be included here. */
+#define notifyNOTIFIED_TASK_STACK_SIZE    ( ( configMINIMAL_STACK_SIZE ) * 2 )
 
 #endif /* FREERTOS_CONFIG_H */

@@ -17,36 +17,40 @@
 /* Tests to be run */
 
 /*** These tests run on all tiles ***/
-#define testingmainENABLE_REG_TEST_TASKS				1
+#define testingmainENABLE_REG_TEST_TASKS                  1
 
 /* Death cannot be run with any demo that creates or destroys tasks */
-#define testingmainENABLE_DEATH_TASKS					1
+#define testingmainENABLE_DEATH_TASKS                     1
 
 /*** These tests run on tile 0 ***/
-#define testingmainENABLE_ABORT_DELAY_TASKS				1
-#define testingmainENABLE_BLOCKING_QUEUE_TASKS			1
-#define testingmainENABLE_BLOCK_TIME_TASKS				1
-#define testingmainENABLE_COUNT_SEMAPHORE_TASKS			1
-#define testingmainENABLE_DYNAMIC_PRIORITY_TASKS		0 // break the data group hierarchy ( suspend then take lock )
-#define testingmainENABLE_EVENT_GROUP_TASKS				1 // Application tick hook break hierarchy
-#define testingmainENABLE_INTERRUPT_QUEUE_TASKS         0 // 1, pxIntQueueTimerISR request task with preemption disable to yield
-#define testingmainENABLE_FLOP_MATH_TASKS				1
-#define testingmainENABLE_INT_MATH_TASKS				1
-#define testingmainENABLE_GENERIC_QUEUE_TASKS			0 // break the data group hierarchy ( suspend then take lock )
-#define testingmainENABLE_INTERRUPT_SEMAPHORE_TASKS		0 // Application tick hook break hierarchy, test failed
-#define testingmainENABLE_MESSAGE_BUFFER_TASKS			1
-#define testingmainENABLE_POLLED_QUEUE_TASKS			1
-#define testingmainENABLE_QUEUE_PEEK_TASKS				1
-#define testingmainENABLE_QUEUE_OVERWRITE_TASKS			1 // Application tick hook break hierarchy
-#define testingmainENABLE_QUEUE_SET_TASKS				0 // Application tick hook break hierarchy, QueueSet.c:509
-#define testingmainENABLE_QUEUE_SET_POLLING_TASKS		1 // Application tick hook break hierarchy
-#define testingmainENABLE_RECURSIVE_MUTEX_TASKS			0 // 336 assume the task high priority task will be blocked soon
-#define testingmainENABLE_SEMAPHORE_TASKS				0 // Working on empty list
-#define testingmainENABLE_STREAMBUFFER_TASKS			0 // Application tick hook break hierarchy, user level critical section
-#define testingmainENABLE_STREAMBUFFER_INTERRUPT_TASKS	0 // Application tick hook break hierarchy, test failed
-#define testingmainENABLE_TASK_NOTIFY_TASKS				1 // Application tick hook break hierarchy
-#define testingmainENABLE_TASK_NOTIFY_ARRAY_TASKS	    1 // Application tick hook break hierarchy
-#define testingmainENABLE_TIMER_DEMO_TASKS				0 // Application tick hook break hierarchy, assert 1130
+#define testingmainENABLE_ABORT_DELAY_TASKS               1
+#define testingmainENABLE_BLOCKING_QUEUE_TASKS            1
+#define testingmainENABLE_BLOCK_TIME_TASKS                1
+#define testingmainENABLE_COUNT_SEMAPHORE_TASKS           1
+#define testingmainENABLE_DYNAMIC_PRIORITY_TASKS          0 /* [FIXME] break the data group hierarchy ( suspend then take lock ) */
+#define testingmainENABLE_EVENT_GROUP_TASKS               1
+#define testingmainENABLE_INTERRUPT_QUEUE_TASKS           0 /* [FIXME] before second timer is called in kernel critical section. */
+                                                            /* Second timer is called in ISR context only with granular lock */
+#define testingmainENABLE_FLOP_MATH_TASKS                 1
+#define testingmainENABLE_INT_MATH_TASKS                  1
+#define testingmainENABLE_GENERIC_QUEUE_TASKS             0 /* [FIXME] break the data group hierarchy ( suspend then take lock ) */
+#define testingmainENABLE_INTERRUPT_SEMAPHORE_TASKS       0 /* [FIXME] line 204, xTaskPriorityInherit and vTaskPlacedOnEventList */
+                                                            /* are now in separate critical section and scheduler suspension */
+#define testingmainENABLE_MESSAGE_BUFFER_TASKS            1 /* [FIXME] User level critical section */
+#define testingmainENABLE_POLLED_QUEUE_TASKS              1
+#define testingmainENABLE_QUEUE_PEEK_TASKS                1
+#define testingmainENABLE_QUEUE_OVERWRITE_TASKS           1 /* Application tick hook break hierarchy */
+#define testingmainENABLE_QUEUE_SET_TASKS                 0 /* [FIXME] Application tick hook break hierarchy, user level critical section */
+#define testingmainENABLE_QUEUE_SET_POLLING_TASKS         1 /* Application tick hook break hierarchy */
+#define testingmainENABLE_RECURSIVE_MUTEX_TASKS           0 /* [FIXME] line 336, xTaskPriorityInherit and vTaskPlacedOnEventList */
+                                                            /* are now in separate critical section and scheduler suspension */
+                                                            /* assume high priority task will be blocked soon */
+#define testingmainENABLE_SEMAPHORE_TASKS                 1 /* [FIXME] user level critical section */
+#define testingmainENABLE_STREAMBUFFER_TASKS              0 /* [FIXME] Application tick hook break hierarchy, user level critical section */
+#define testingmainENABLE_STREAMBUFFER_INTERRUPT_TASKS    1 /* Application tick hook break hierarchy */
+#define testingmainENABLE_TASK_NOTIFY_TASKS               1 /* [FIXME] Application tick hook break hierarchy, user level critical section */
+#define testingmainENABLE_TASK_NOTIFY_ARRAY_TASKS         1 /* [FIXME] Application tick hook break hierarchy, user level critical section */
+#define testingmainENABLE_TIMER_DEMO_TASKS                1 /* [FIXME] Application tick hook break hierarchy, user level critical section */
 
 /*** These tests run on all tiles ***/
 #define mainREGTEST_PRIORITY				( tskIDLE_PRIORITY + 0 )
