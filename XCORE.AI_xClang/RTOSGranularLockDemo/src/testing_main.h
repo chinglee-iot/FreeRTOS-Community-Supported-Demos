@@ -27,30 +27,33 @@
 #define testingmainENABLE_BLOCKING_QUEUE_TASKS            1
 #define testingmainENABLE_BLOCK_TIME_TASKS                1
 #define testingmainENABLE_COUNT_SEMAPHORE_TASKS           1
-#define testingmainENABLE_DYNAMIC_PRIORITY_TASKS          0 /* [FIXME] break the data group hierarchy ( suspend then take lock ) */
+#define testingmainENABLE_DYNAMIC_PRIORITY_TASKS          1 /* Task can be yielded even when scheduler is supspended. */
 #define testingmainENABLE_EVENT_GROUP_TASKS               1
-#define testingmainENABLE_INTERRUPT_QUEUE_TASKS           0 /* [FIXME] before second timer is called in kernel critical section. */
-                                                            /* Second timer is called in ISR context only with granular lock */
+#define testingmainENABLE_INTERRUPT_QUEUE_TASKS           0 /* [FIXME] Second timer is called in ISR context only with granular lock.
+                                                            /* before second timer is called in kernel critical section. */
 #define testingmainENABLE_FLOP_MATH_TASKS                 1
 #define testingmainENABLE_INT_MATH_TASKS                  1
-#define testingmainENABLE_GENERIC_QUEUE_TASKS             0 /* [FIXME] break the data group hierarchy ( suspend then take lock ) */
+#define testingmainENABLE_GENERIC_QUEUE_TASKS             0 /* [FIXME] assuming task suspended immediately. line 683. Other fail reason. */
 #define testingmainENABLE_INTERRUPT_SEMAPHORE_TASKS       0 /* [FIXME] line 204, xTaskPriorityInherit and vTaskPlacedOnEventList */
                                                             /* are now in separate critical section and scheduler suspension */
-#define testingmainENABLE_MESSAGE_BUFFER_TASKS            1 /* [FIXME] User level critical section */
+#define testingmainENABLE_MESSAGE_BUFFER_TASKS            1 /* user level critical section in used for port doesn't support nesting interrupt. */
 #define testingmainENABLE_POLLED_QUEUE_TASKS              1
 #define testingmainENABLE_QUEUE_PEEK_TASKS                1
 #define testingmainENABLE_QUEUE_OVERWRITE_TASKS           1 /* Application tick hook break hierarchy */
 #define testingmainENABLE_QUEUE_SET_TASKS                 0 /* [FIXME] Application tick hook break hierarchy, user level critical section */
+                                                            /* Failed after enable from ISR API. */
 #define testingmainENABLE_QUEUE_SET_POLLING_TASKS         1 /* Application tick hook break hierarchy */
 #define testingmainENABLE_RECURSIVE_MUTEX_TASKS           0 /* [FIXME] line 336, xTaskPriorityInherit and vTaskPlacedOnEventList */
                                                             /* are now in separate critical section and scheduler suspension */
                                                             /* assume high priority task will be blocked soon */
-#define testingmainENABLE_SEMAPHORE_TASKS                 1 /* [FIXME] user level critical section */
-#define testingmainENABLE_STREAMBUFFER_TASKS              0 /* [FIXME] Application tick hook break hierarchy, user level critical section */
+#define testingmainENABLE_SEMAPHORE_TASKS                 1 /* user level critical section in used for atomic operation. */
+#define testingmainENABLE_STREAMBUFFER_TASKS              0 /* [FIXME] Application tick and tick increment is not in the same critical section.*/
+                                                            /* Race condition in sbRECEIVE_COMPLETED and sbRECEIVE_COMPLETED_FROM_ISR. */
+                                                            /* ( pxStreamBuffer )->xTaskWaitingToSend = NULL; */
 #define testingmainENABLE_STREAMBUFFER_INTERRUPT_TASKS    1 /* Application tick hook break hierarchy */
-#define testingmainENABLE_TASK_NOTIFY_TASKS               1 /* [FIXME] Application tick hook break hierarchy, user level critical section */
-#define testingmainENABLE_TASK_NOTIFY_ARRAY_TASKS         1 /* [FIXME] Application tick hook break hierarchy, user level critical section */
-#define testingmainENABLE_TIMER_DEMO_TASKS                1 /* [FIXME] Application tick hook break hierarchy, user level critical section */
+#define testingmainENABLE_TASK_NOTIFY_TASKS               1 /* user level critical section in used for atomic operation. */
+#define testingmainENABLE_TASK_NOTIFY_ARRAY_TASKS         1 /* user level critical section in used for atomic operation. */
+#define testingmainENABLE_TIMER_DEMO_TASKS                1 /* user level critical section in used for atomic operation. */
 
 /*** These tests run on all tiles ***/
 #define mainREGTEST_PRIORITY				( tskIDLE_PRIORITY + 0 )

@@ -104,5 +104,6 @@ your application. */
 
 /* A header file that defines trace macro can be included here. */
 #define notifyNOTIFIED_TASK_STACK_SIZE    ( ( configMINIMAL_STACK_SIZE ) * 2 )
+#define queuesetTASK_STACK_SIZE           ( ( configMINIMAL_STACK_SIZE ) * 2 )
 
 #endif /* FREERTOS_CONFIG_H */
