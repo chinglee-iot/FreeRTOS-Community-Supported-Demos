@@ -45,7 +45,10 @@ DEFINE_RTOS_INTERRUPT_CALLBACK( pxIntQueueTimerISR, pvData )
 
 	hwtimer_change_trigger_time( xTimer, ulNow );
 
-	portYIELD_FROM_ISR( xYieldRequired );
+	if( xTaskUnlockCanYield() == pdTRUE )
+	{
+		portYIELD_FROM_ISR( xYieldRequired );
+	}
 }
 
 void vInitialiseTimerForIntQueueTest( void )
