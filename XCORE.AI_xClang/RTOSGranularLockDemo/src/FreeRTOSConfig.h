@@ -66,6 +66,9 @@ your application. */
 #define configTIMER_QUEUE_LENGTH                10
 #define configTIMER_TASK_STACK_DEPTH            portTASK_STACK_DEPTH(prvTimerTask)
 
+/* Test config. */
+#define configSTREAM_BUFFER_TRIGGER_LEVEL_TEST_MARGIN   1
+
 /* Interrupt nesting behaviour configuration. */
 /*
 #define configKERNEL_INTERRUPT_PRIORITY         [dependent of processor]

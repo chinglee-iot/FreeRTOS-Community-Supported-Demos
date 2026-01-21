@@ -29,23 +29,23 @@
 #define testingmainENABLE_COUNT_SEMAPHORE_TASKS           1
 #define testingmainENABLE_DYNAMIC_PRIORITY_TASKS          0 /* critical nesting problem, kernel then queue. */
 #define testingmainENABLE_EVENT_GROUP_TASKS               1
-#define testingmainENABLE_INTERRUPT_QUEUE_TASKS           0 /* [FIXME] waiting for queue priority inversion. */
+#define testingmainENABLE_INTERRUPT_QUEUE_TASKS           1
 #define testingmainENABLE_FLOP_MATH_TASKS                 1
 #define testingmainENABLE_INT_MATH_TASKS                  1
 #define testingmainENABLE_GENERIC_QUEUE_TASKS             1
 #define testingmainENABLE_INTERRUPT_SEMAPHORE_TASKS       1
 #define testingmainENABLE_POLLED_QUEUE_TASKS              1
-#define testingmainENABLE_QUEUE_PEEK_TASKS                1 /* Queue peek error. */
+#define testingmainENABLE_QUEUE_PEEK_TASKS                1
 #define testingmainENABLE_QUEUE_OVERWRITE_TASKS           1
 #define testingmainENABLE_QUEUE_SET_TASKS                 1
 #define testingmainENABLE_QUEUE_SET_POLLING_TASKS         1
 #define testingmainENABLE_RECURSIVE_MUTEX_TASKS           1
 #define testingmainENABLE_SEMAPHORE_TASKS                 1
-#define testingmainENABLE_STREAMBUFFER_TASKS              0 /* Streambuffer task failed */
+#define testingmainENABLE_STREAMBUFFER_TASKS              1
 #define testingmainENABLE_STREAMBUFFER_INTERRUPT_TASKS    1
-#define testingmainENABLE_TASK_NOTIFY_TASKS               0 /* critical nesting problem, prvProcessTimerOrBlockTask. */
-#define testingmainENABLE_TASK_NOTIFY_ARRAY_TASKS         0 /* critical nesting problem, prvProcessTimerOrBlockTask. */
-#define testingmainENABLE_TIMER_DEMO_TASKS                0 /* critical nesting problem, prvProcessTimerOrBlockTask. */
+#define testingmainENABLE_TASK_NOTIFY_TASKS               1
+#define testingmainENABLE_TASK_NOTIFY_ARRAY_TASKS         1
+#define testingmainENABLE_TIMER_DEMO_TASKS                1
 
 /*** These tests run on all tiles ***/
 #define mainREGTEST_PRIORITY				( tskIDLE_PRIORITY + 0 )
